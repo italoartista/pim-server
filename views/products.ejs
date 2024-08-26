@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Fornecedor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (Array.isArray(products) && products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <tr>
+                        <td><%= product.product_id %></td>
+                        <td><%= product.product_name %></td>
+                        <td><%= product.product_description %></td>
+                        <td><%= product.category_name %></td>
+                        <td><%= product.supplier_name %></td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="5">Nenhum produto encontrado</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
